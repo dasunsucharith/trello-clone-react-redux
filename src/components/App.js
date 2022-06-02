@@ -9,11 +9,20 @@ class App extends Component {
     return (
       <div className="App">
         <h2>Hello World</h2>
-        {lists.map(list => (
-          <TrelloList title={list.title} cards={list.cards} />
-        ))}
+        <div style={styles.listsContainer}>
+          {lists.map(list => (
+            <TrelloList key={list.id} title={list.title} cards={list.cards} />
+          ))}
+        </div>
       </div>
     );
+  }
+}
+
+const styles = {
+  listsContainer: {
+    display: 'flex',
+    flexDirection: 'row',
   }
 }
 
