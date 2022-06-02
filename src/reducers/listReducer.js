@@ -29,6 +29,28 @@ const initialState = [
             {
                 id: 2,
                 text: 'this is the third text content of the second list'
+            },
+            {
+                id: 3,
+                text: 'this is the forth text content of the second list'
+            }
+        ]
+    },
+    {
+        title: 'Third list',
+        id: 2,
+        cards: [
+            {
+                id: 0,
+                text: 'this is the first text content of the third list'
+            },
+            {
+                id: 1,
+                text: 'this is the second text content of the third list'
+            },
+            {
+                id: 2,
+                text: 'this is the third text content of the third list'
             }
         ]
     },
