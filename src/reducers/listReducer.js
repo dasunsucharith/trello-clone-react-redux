@@ -1,59 +1,59 @@
 import { CONSTANTS } from '../actions'
 
 let listID = 3
-let cardID = 4
+let cardID = 9
 
 const initialState = [
     {
         title: 'first list',
-        id: 0,
+        id: `list-${0}`,
         cards: [
             {
-                id: 0,
+                id: `card-${0}`,
                 text: 'this is just a static card'
             },
             {
-                id: 1,
+                id: `card-${1}`,
                 text: 'this is justs a static second card'
             }
         ]
     },
     {
         title: 'second list',
-        id: 1,
+        id: `list-${1}`,
         cards: [
             {
-                id: 0,
+                id: `card-${2}`,
                 text: 'this is the first text content of the second list'
             },
             {
-                id: 1,
+                id: `card-${3}`,
                 text: 'this is the second text content of the second list'
             },
             {
-                id: 2,
+                id: `card-${4}`,
                 text: 'this is the third text content of the second list'
             },
             {
-                id: 3,
+                id: `card-${5}`,
                 text: 'this is the forth text content of the second list'
             }
         ]
     },
     {
         title: 'Third list',
-        id: 2,
+        id: `list-${3}`,
         cards: [
             {
-                id: 0,
+                id: `card-${6}`,
                 text: 'this is the first text content of the third list'
             },
             {
-                id: 1,
+                id: `card-${7}`,
                 text: 'this is the second text content of the third list'
             },
             {
-                id: 2,
+                id: `card-${8}`,
                 text: 'this is the third text content of the third list'
             }
         ]
@@ -69,7 +69,7 @@ const listReducer = ( state = initialState, action ) => {
             const newList = {
                 title: action.payload,
                 cards: [],
-                id: listID,
+                id: `list-${listID}`,
             }
             listID += 1
             return [...state, newList]
@@ -77,7 +77,7 @@ const listReducer = ( state = initialState, action ) => {
         case CONSTANTS.ADD_CARD:
             const newCard = {
                 text: action.payload.text,
-                id: cardID,
+                id: `card-${cardID}`,
             }
             cardID += 1
 
