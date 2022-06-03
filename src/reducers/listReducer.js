@@ -93,6 +93,18 @@ const listReducer = ( state = initialState, action ) => {
             })
 
             return newState
+        
+        case CONSTANTS.DRAG_HAPPENED:
+
+            const {
+                droppableIdStart,
+                droppableIdEnd,
+                droppableIndexEnd,
+                droppableIndexStart, 
+                draggableId
+            } = action.payload
+            const newState = [...state]
+            if (droppableIdStart === droppableIdEnd)
 
         default:
             return state

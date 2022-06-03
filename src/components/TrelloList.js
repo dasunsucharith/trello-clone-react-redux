@@ -8,7 +8,7 @@ function TrelloList({title, cards, listID, index}) {
         <Droppable droppableId={String(listID)}>
             {provided => (
                 <div {...provided.droppableProps} ref={provided.innerRef} style={styles.container}>
-                    <h4 style={{ textAlign: 'center', }}>{title}</h4>
+                    <h4 style={{ textAlign: 'center', textTransform: 'uppercase', }}>{title}</h4>
                     {cards.map(card => (
                         <TrelloCard key={card.id} index={index} text={card.text} id={card.id} />
                     ))}
