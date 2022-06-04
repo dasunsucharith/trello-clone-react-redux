@@ -1,7 +1,7 @@
 import React from 'react'
 import TrelloCard from './TrelloCard'
 import TrelloActionButton from './TrelloActionButton'
-import { Droppable } from 'react-beautiful-dnd'
+import { Droppable, Draggable } from 'react-beautiful-dnd'
 import styled from 'styled-components'
 
 const ListContainer = styled.div`
@@ -13,32 +13,28 @@ const ListContainer = styled.div`
     margin-right: 8px;
 `
 
-function TrelloList({ title, cards, listID }) {
+function TrelloList({ title, cards, listID, index }) {
+    console.log(cards)
     return (
-        <Droppable droppableId={String(listID)}>
+        <Draggable draggableId={String(listID)} index={index} >
             {provided => (
-                <ListContainer {...provided.droppableProps} ref={provided.innerRef}>
-                    <h4 style={{ textAlign: 'center', textTransform: 'uppercase', }}>{title}</h4>
-                    {cards.map((card, index) => (
-                        <TrelloCard key={card.id} index={index} text={card.text} id={card.id} />
-                    ))}
-                    <TrelloActionButton listID={listID} />
-                    {provided.placeholder}
-                </ListContainer> 
-            ) }
-        </Droppable>
+                <ListContainer ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                    <Droppable droppableId={String(listID)}>
+                        {provided => (
+                            <div ref={provided.innerRef} {...provided.droppableProps} >
+                                <h4 style={{ textAlign: 'center', textTransform: 'uppercase', }}>{title}</h4>
+                                {cards.map((card, index) => (
+                                    <TrelloCard key={card.id} index={index} text={card.text} id={card.id} />
+                                ))}
+                                <TrelloActionButton listID={listID} />
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable>
+                </ListContainer>
+            )}
+        </Draggable>
     )
-}
-
-const styles = {
-    container: {
-        backgroundColor: '#dfe3e6',
-        borderRadius: 3,
-        width: 300,
-        height: '100%',
-        padding: 8,
-        marginRight: 8,
-    }
 }
 
 export default TrelloList

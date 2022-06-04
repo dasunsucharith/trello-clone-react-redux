@@ -57,7 +57,7 @@ class TrelloActionButton extends React.Component {
 
         return
     }
- 
+
     renderAddButton = () => {
         const { list } = this.props;
 
